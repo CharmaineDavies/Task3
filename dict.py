@@ -18,7 +18,7 @@ def read_dict(C):
     conn.close()
     return rows
 
-def add_word(C, word, translation):
+def insert_word(C, word, translation):
     conn = get_db_connection()
     cur = C.cursor()
     cur.execute(f"INSERT INTO dictionary (word, translation) VALUES ('{word}', '{translation}');")
@@ -42,14 +42,14 @@ def save_dict(C):
 while True: ## REPL - Read Execute Program Loop
     cmd = input("Command: ")
     if cmd == "list":
-        print(read_dict(conn))
+        print(read_dict(C))
     elif cmd == "add":
         word = input("  Word: ")
         translation = input("  Translation: ")
-        add_word(conn, word, translation)
+        insert_word(C, word, translation)
     elif cmd == "delete":
         ID = input("  ID: ")
-        delete_word(conn, ID)
+        delete_word(C, ID)
     elif cmd == "quit":
-        save_dict(conn)
+        save_dict(C)
         exit()
