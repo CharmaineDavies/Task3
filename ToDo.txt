@@ -1,3 +1,0 @@
-Todo:
-Create a function to add words to the database.
-Test the function that it works
